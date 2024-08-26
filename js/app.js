@@ -13,7 +13,7 @@ function adicionar() {
     
     if (!nome) {
         alert('Escreva um nome para adicionar!')
-    return;
+        return;
     }
 
     listaAmigos.push(nome);
