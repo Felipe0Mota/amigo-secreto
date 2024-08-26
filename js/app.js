@@ -7,16 +7,20 @@ function adicionar() {
     let nome = document.getElementById('nome-amigo').value.trim();
 
     if (listaAmigos.includes(nome)) {
-        alert('Este nome já foi adicionado, adicione o sobrenome ou mude o nome desejado');
-    } else if (!nome) {
-        alert('Escreva um nome para adicionar!')
-    } else {
-        listaAmigos.push(nome);
-        listaSorteio.push(nome);
+        alert('Nome já adicionado');
+        return;
+    } 
     
-        incluidos.innerHTML = listaAmigos.join(', ');
-        document.getElementById('nome-amigo').value = '';
+    if (!nome) {
+        alert('Escreva um nome para adicionar!')
+    return;
     }
+
+    listaAmigos.push(nome);
+    listaSorteio.push(nome);
+
+    incluidos.innerHTML = listaAmigos.join(', ');
+    document.getElementById('nome-amigo').value = '';
 }
 
 function reiniciar() {
@@ -29,8 +33,11 @@ function reiniciar() {
 function sortear(){
     resultado.innerHTML = '';
 
-    if (listaAmigos.length >= 3) {
-            // ⇊ forma feita por mim ⇊
+    if (listaAmigos.length < 4) {
+        alert('Adicione ao menos 3 nomes para sortear');
+        return;
+    }
+
     embaralhar(listaSorteio);
 
     for (let i = 0; i < listaAmigos.length; i++) {
@@ -46,9 +53,6 @@ function sortear(){
     //         resultado.innerHTML = `${resultado.innerHTML} ${listaAmigos[i]} ⇒ ${listaAmigos[i + 1]}<br>`;
     //     }
     // }
-    } else {
-        alert('Adicione ao menos 3 nomes para sortear');
-    }
 }
 
 
